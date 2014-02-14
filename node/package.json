@@ -1,0 +1,10 @@
+{
+    "name": "compilyai.node",
+    "version": "1.0.0",
+
+    "dependencies": {
+        "jshint": "*",
+        "less": "*",
+        "jsonlint": "*"
+    }
+}

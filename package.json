@@ -1,0 +1,26 @@
+{
+    "name": "com.doersguild.phplint",
+    "version": "0.0.1",
+    "description": "PHPLint Extension for Brackets",
+    "title": "PHPLint Extension for Brackets",
+    "scripts": {},
+    "dependencies": {
+        "child_process": "*"
+    },
+    "keywords": [
+    "phplint",
+    "brackets",
+    "php",
+    "linting",
+    "codequality",
+    "inspection"
+  ],
+    "engines": {
+        "brackets": ">=0.30.0"
+    },
+    "author": "Doers' Guild <mail@doersguild.com>",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/doersguild/brackets-phplint/issues"
+    }
+}
