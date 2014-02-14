@@ -62,7 +62,6 @@ define(function (require, exports, module) {
         CodeInspection.register("php", {
             name: "PHPLint",
             scanFile: function (text, fullPath) {
-                loadErrorsFor(fullPath);
                 return {
                     errors: errors
                 };
