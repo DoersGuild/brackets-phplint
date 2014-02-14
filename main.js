@@ -11,44 +11,27 @@ define(function (require, exports, module) {
     var CodeInspection = brackets.getModule("language/CodeInspection");
     var ext_utils = brackets.getModule('utils/ExtensionUtils');
     var node = new(brackets.getModule('utils/NodeConnection'));
-    var errors = null;
+    var errors = [];
 
     function loadErrorsFor(fullPath) {
         // Load errors for given path
-
         node.domains.phplint.commander('php -l "' + fullPath + '"').done(function (data) {
             console.log(data);
             var match = /(.+) in (.+) on line (\d+)/.exec(data);
             var type = data.indexOf('error') > -1 ? CodeInspection.Type.ERROR : CodeInspection.Type.WARNING;
             if (data.indexOf('No syntax errors detected') === -1) {
-                errors = {
+                errors = [{
                     pos: {
                         line: match[3]
                     },
                     message: match[1],
                     type: type
-                };
+                }];
             }
         });
     }
 
-    function lintOneFile(text, fullPath) {
-
-        loadErrorsFor(fullPath);
-
-        return errors ? {
-            errors: errors
-        } : null;
-    }
-
     function init() {
-
-        if (!node.domains.phplint) {
-            node.connect(true).done(function () {
-                var path = ext_utils.getModulePath(module, 'node/commander.js');
-                node.loadDomains([path], true);
-            });
-        }
 
         var editor = brackets.getModule('editor/EditorManager');
         $(editor).on('activeEditorChange', function (event, editor) {
@@ -75,9 +58,23 @@ define(function (require, exports, module) {
         // Register for PHP files
         CodeInspection.register("php", {
             name: "PHPLint",
-            scanFile: lintOneFile
+            scanFile: function (text, fullPath) {
+                loadErrorsFor(fullPath);
+                return {
+                    errors: errors
+                };
+            }
         });
     }
 
-    AppInit.appReady(init);
+    if (!node.domains.phplint) {
+        node.connect(true).done(function () {
+            var path = ext_utils.getModulePath(module, 'node/commander.js');
+            node.loadDomains([path], true).done(function () {
+                AppInit.appReady(init);
+            });
+        });
+    } else {
+        AppInit.appReady(init);
+    }
 });
