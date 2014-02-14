@@ -16,18 +16,21 @@ define(function (require, exports, module) {
     function loadErrorsFor(fullPath) {
         // Load errors for given path
         node.domains.phplint.commander('php -l "' + fullPath + '"').done(function (data) {
-            console.log(data);
             var match = /(.+) in (.+) on line (\d+)/.exec(data);
+            console.log("Matched data : " + JSON.stringify(data) + " \n Matches:" + JSON.stringify(match));
             var type = data.indexOf('error') > -1 ? CodeInspection.Type.ERROR : CodeInspection.Type.WARNING;
             if (data.indexOf('No syntax errors detected') === -1) {
                 errors = [{
                     pos: {
-                        line: match[3]
+                        line: parseInt(match[3], 10)
                     },
                     message: match[1],
                     type: type
                 }];
+            } else {
+                errors = [];
             }
+            CodeInspection.requestRun();
         });
     }
 
