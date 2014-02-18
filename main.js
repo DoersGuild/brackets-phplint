@@ -15,7 +15,7 @@ define(function (require, exports, module) {
 
     function loadErrorsFor(fullPath) {
         // Load errors for given path
-        node.domains.phplint.commander('php -l "' + fullPath + '" -d display_errors=-1').done(function (data) {
+        node.domains.phplint.commander('php -d display_errors=1 -d error_reporting=-1 -l "' + fullPath + '"').done(function (data) {
             var match = /(.+) in (.+) on line (\d+)/.exec(data);
             console.log("Matched data : " + JSON.stringify(data) + " \n Matches:" + JSON.stringify(match));
             var type = data.indexOf('error') > -1 ? CodeInspection.Type.ERROR : CodeInspection.Type.WARNING;
