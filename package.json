@@ -1,5 +1,5 @@
 {
-    "name": "com.doersguild.phplint",
+    "name": "Brackets - PHPLint",
     "version": "0.0.1",
     "description": "PHPLint Extension for Brackets",
     "title": "PHPLint Extension for Brackets",
@@ -8,13 +8,13 @@
         "child_process": "*"
     },
     "keywords": [
-    "phplint",
-    "brackets",
-    "php",
-    "linting",
-    "codequality",
-    "inspection"
-  ],
+        "phplint",
+        "brackets",
+        "php",
+        "linting",
+        "codequality",
+        "inspection"
+    ],
     "engines": {
         "brackets": ">=0.30.0"
     },
