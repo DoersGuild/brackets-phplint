@@ -10,7 +10,8 @@ define(function (require, exports, module) {
     var AppInit = brackets.getModule("utils/AppInit");
     var CodeInspection = brackets.getModule("language/CodeInspection");
     var ext_utils = brackets.getModule('utils/ExtensionUtils');
-    var node = new(brackets.getModule('utils/NodeConnection'));
+    var NodeConnection = brackets.getModule('utils/NodeConnection');
+    var node = new NodeConnection();
     var errors = [];
 
     function loadErrorsFor(fullPath) {
