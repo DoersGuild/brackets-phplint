@@ -1,8 +1,8 @@
 {
     "name": "com.doersguild.brackets.phplint",
-    "version": "1.0.0",
-    "description": "PHPLint Extension for Brackets",
-    "title": "PHPLint Extension for Brackets",
+    "version": "1.0.1",
+    "description": "`php -l` powered PHP-lint extension for Brackets",
+    "title": "PHPLint for Brackets",
     "scripts": {},
     "dependencies": {
         "child_process": "*"
@@ -19,6 +19,7 @@
         "brackets": ">=0.30.0"
     },
     "author": "Doers' Guild <mail@doersguild.com>",
+    "homepage": "https://github.com/DoersGuild/brackets-phplint",
     "license": "MIT",
     "bugs": {
         "url": "https://github.com/doersguild/brackets-phplint/issues"
