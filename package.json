@@ -1,6 +1,6 @@
 {
     "name": "com.doersguild.brackets.phplint",
-    "version": "0.1.0",
+    "version": "1.0.0",
     "description": "PHPLint Extension for Brackets",
     "title": "PHPLint Extension for Brackets",
     "scripts": {},
